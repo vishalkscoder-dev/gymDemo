@@ -24,7 +24,7 @@ export default function Membership() {
 
         <div className="membership-grid">
           {memberships.map((plan)=>(
-            <MembershipCard
+            <MemberShipCard
               key={plan.id}
               plan={plan}
             />
