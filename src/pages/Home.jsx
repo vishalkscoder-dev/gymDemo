@@ -4,7 +4,7 @@ import Hero from "../components/Hero"
 import CTASection from "../components/CTASection"
 import FacilityCard from "../components/FacilityCard"
 import TrainerCard from "../components/TrainerCard"
-import MembershipCard from "../components/MembershipCard"
+import MemberShipCard from "../components/MemberShipCard"
 import Gallery from "../components/Gallery"
 
 import gymData from "../data/gymData"
