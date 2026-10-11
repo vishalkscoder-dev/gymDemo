@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MembershipCard from "../components/MembershipCard"
+import MemberShipCard from "../components/MemberShipCard"
 import memberships from "../data/memberships"
 import Hero from "../components/Hero"
 
