@@ -82,7 +82,7 @@ export default function Home() {
 
         <div>
           {featuredMemberships.map((plan)=>(
-            <MembershipCard
+            <MemberShipCard
               key={plan.id}
               plan={plan}
             />
