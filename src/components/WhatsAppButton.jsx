@@ -5,8 +5,6 @@ import {
 } from "../config/whatsapp"
 
 
-
-
 export default function WhatsAppButton() {
     const handleWhatsapp = ()=>{
         const url = `https://wa.me/${GYM_WHATSAPP_NUMBER}?text=${encodeURIComponent(

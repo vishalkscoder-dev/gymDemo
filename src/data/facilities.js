@@ -8,7 +8,7 @@ const facilities = [
   },
   {
     id: 2,
-    name: "Cardio Zone",
+    name: "Cardio Training",
     image: "/images/cardio.jpg",
     description:
       "Dedicated cardio equipment to improve endurance and cardiovascular fitness.",

@@ -15,10 +15,12 @@
   --gold-primary: #D4AF37;
   --gold-bright: #F5D76E;
   --gold-dark: #A68018;
+  --gold-metallic: #B08D36;
   --gold-ambient: rgba(212, 175, 55, 0.08);
   --gold-glow: rgba(212, 175, 55, 0.35);
   --gold-border: rgba(212, 175, 55, 0.25);
   --gold-border-hover: rgba(245, 215, 110, 0.65);
+  --nav-height: 76px;
 
   --text-primary: #FFFFFF;
   --text-secondary: #B3B3B3;
@@ -139,21 +141,22 @@ nav > div {
   gap: 24px;
 }
 
-/* Brand Name / Logo */
+/* Brand Name / Logo (V.R.GYM) */
 nav h2 {
   font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #FFFFFF 20%, var(--gold-bright) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #B08D36;
+  -webkit-text-fill-color: #B08D36;
+  background: none;
   white-space: nowrap;
   margin: 0;
   display: flex;
   align-items: center;
   gap: 8px;
+  text-shadow: 0 0 20px rgba(176, 141, 54, 0.35);
 }
 
 nav h2::after {
@@ -225,10 +228,33 @@ nav a.active {
 }
 
 /* ==========================================================================
-   HERO SECTION (main > section:first-of-type)
+   HERO SECTION & HOME VIDEO HERO
    Cinematic, atmospheric, bold typography, gold CTA buttons
    ========================================================================== */
 
+/* Home Page Hero: Video Backdrop filling visible viewport beneath navbar */
+main:has(> video) {
+  position: relative;
+}
+
+main > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--nav-height, 76px));
+  height: calc(100dvh - var(--nav-height, 76px));
+  min-height: calc(100vh - var(--nav-height, 76px));
+  min-height: calc(100dvh - var(--nav-height, 76px));
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: 0;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Default hero section (used by About, Facilities, Membership, Gallery, Contact — strictly center aligned) */
 main > section:first-of-type {
   position: relative;
   min-height: 82vh;
@@ -247,10 +273,93 @@ main > section:first-of-type {
   overflow: hidden;
 }
 
+/* Home Page Hero Section: Left-aligned content, full viewport height beneath navbar, no gap */
+main:has(> video) > section:first-of-type,
+main > video + section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - var(--nav-height, 76px));
+  height: calc(100dvh - var(--nav-height, 76px));
+  min-height: calc(100vh - var(--nav-height, 76px));
+  min-height: calc(100dvh - var(--nav-height, 76px));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 40px clamp(24px, 6vw, 90px);
+}
+
+/* Home Hero Left-Aligned Elements */
+main:has(> video) > section:first-of-type::before,
+main > video + section::before {
+  align-self: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+main:has(> video) > section:first-of-type h1,
+main > video + section h1 {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+  align-self: flex-start;
+}
+
+main:has(> video) > section:first-of-type h3,
+main > video + section h3 {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+  align-self: flex-start;
+}
+
+main:has(> video) > section:first-of-type h4,
+main > video + section h4 {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+  align-self: flex-start;
+}
+
+/* Home Page Hero CTA Buttons: Left Aligned */
+main:has(> video) > section:first-of-type > div,
+main > video + section > div {
+  justify-content: flex-start;
+  align-items: center;
+  align-self: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Hero dark gradient overlay ensuring high contrast and readability over video (with left-side dark bias) */
+main:has(> video) .hero-overlay,
+main > video + section .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.55) 45%, rgba(5, 5, 5, 0.25) 100%),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.55) 0%, transparent 40%, rgba(5, 5, 5, 0.8) 85%, var(--bg-primary) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure all hero text, badge and CTA buttons sit visibly above overlay and video */
+main > section:first-of-type > *:not(.hero-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
 /* Digital Futuristic Badge above Headline */
 main > section:first-of-type::before {
   content: "⚡ THE NEXT GENERATION FITNESS CLUB";
   display: inline-block;
+  position: relative;
+  z-index: 2;
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
@@ -266,7 +375,7 @@ main > section:first-of-type::before {
   animation: badgeGlow 3.5s ease-in-out infinite;
 }
 
-/* Hero Headline */
+/* Hero Headline — Dark Metallic Gold for V.R.GYM, About V.R.GYM, Our Facilities, Membership Plans, Gym Gallery, Contact Us */
 main > section:first-of-type h1 {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 7vw, 5.2rem);
@@ -274,13 +383,67 @@ main > section:first-of-type h1 {
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #B08D36;
+  -webkit-text-fill-color: #B08D36;
+  background: none;
   max-width: 950px;
   margin-bottom: 22px;
-  background: linear-gradient(180deg, #FFFFFF 35%, rgba(255, 255, 255, 0.75) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(176, 141, 54, 0.25);
+}
+
+/* Hero Headline spacing when taglines are present */
+main > section:first-of-type:has(h3:not(:empty)) h1 {
+  margin-bottom: 12px;
+}
+
+/* Hero Taglines: "INSTALL YOUR MUSCLES" (h3) and "UNISEX GYM" (h4) — Pure White on Home Hero */
+main:has(> video) > section:first-of-type h3,
+main > video + section h3,
+main > section:first-of-type h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  background: none;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+main:has(> video) > section:first-of-type h4,
+main > video + section h4,
+main > section:first-of-type h4 {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  background: none;
+  margin-bottom: 34px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Specific Section Headings in Dark Metallic Gold (Our Facilities, Membership Plans, Gym Gallery) */
+main:has(> video) > section:nth-of-type(3) > h2,
+main:has(> video) > section:nth-of-type(4) > h2,
+main:has(> video) > section:nth-of-type(5) > h2,
+main:has(> video) > section:has(> div > article:not(.membership-card)) > h2,
+main:has(> video) > section:has(.membership-card) > h2,
+main:has(> video) > section:has(.gallery-grid) > h2 {
+  color: #B08D36;
+}
+
+/* Cleanly hide empty tagline / description elements */
+main > section:first-of-type h3:empty,
+main > section:first-of-type h4:empty,
+main > section:first-of-type p:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Hero Tagline / Subtitle */
@@ -294,7 +457,7 @@ main > section:first-of-type p {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Hero CTA Buttons Container (Overriding general section > div grid) */
+/* Hero CTA Buttons Container (Overriding general section > div grid — Centered by default for non-Home pages) */
 main > section:first-of-type > div {
   display: flex;
   align-items: center;
@@ -1958,17 +2121,18 @@ footer::before {
   box-shadow: 0 0 16px var(--gold-bright);
 }
 
-/* Footer Brand Column */
+/* Footer Brand Column (V.R.GYM) */
 footer > div:first-child h2 {
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #FFFFFF 20%, var(--gold-bright) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #B08D36;
+  -webkit-text-fill-color: #B08D36;
+  background: none;
   margin-bottom: 12px;
+  text-shadow: 0 0 20px rgba(176, 141, 54, 0.35);
 }
 
 footer > div:first-child p:first-of-type {
@@ -2197,6 +2361,10 @@ footer + button:hover {
 
 /* Tablet & Smaller Laptops */
 @media (max-width: 1024px) {
+  :root {
+    --nav-height: 71px;
+  }
+
   nav {
     padding: 16px 24px;
   }
@@ -2222,6 +2390,10 @@ footer + button:hover {
 
 /* Mobile Devices */
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 112px;
+  }
+
   nav {
     padding: 14px 16px;
   }
@@ -2261,8 +2433,23 @@ footer + button:hover {
     padding: 85px 16px 65px;
   }
 
+  main:has(> video) > section:first-of-type,
+  main > video + section {
+    min-height: calc(100vh - var(--nav-height, 112px));
+    min-height: calc(100dvh - var(--nav-height, 112px));
+    height: calc(100vh - var(--nav-height, 112px));
+    height: calc(100dvh - var(--nav-height, 112px));
+    padding: 24px 20px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
   main > section:first-of-type h1 {
     font-size: clamp(2.3rem, 8.5vw, 3.4rem);
+  }
+
+  main > section:first-of-type h4 {
+    margin-bottom: 24px;
   }
 
   main > section:first-of-type > div {
@@ -2271,9 +2458,22 @@ footer + button:hover {
     gap: 14px;
   }
 
+  main:has(> video) > section:first-of-type > div,
+  main > video + section > div {
+    align-items: flex-start;
+    width: auto;
+  }
+
   main > section:first-of-type > div a {
     width: 100%;
     max-width: 340px;
+    text-align: center;
+  }
+
+  main:has(> video) > section:first-of-type > div a,
+  main > video + section > div a {
+    width: auto;
+    min-width: 180px;
     text-align: center;
   }
 

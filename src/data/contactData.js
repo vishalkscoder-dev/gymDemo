@@ -1,8 +1,9 @@
 const contactData = {
-  phone: "6374400426",
-  email: "info@ironcorefitness.com",
-  address: "Nagercoil, Tamil Nadu, India",
-  workingHours: "Monday - Saturday: 5:00 AM - 10:00 PM",
+  phone1: "6374400426",
+  phone2: "8056805127",
+  email: "sekusarablue@gmail.com",
+  address: "Kottar, Nagercoil, Tamil Nadu, India",
+  workingHours: "Monday - Saturday: 5:30 AM - 9:30 PM",
 }
 
 export default contactData

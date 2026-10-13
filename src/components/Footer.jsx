@@ -13,9 +13,10 @@ export default function Footer() {
     <footer>
         <div>
             <h2>{gymData.name}</h2>
-            <p>{gymData.tagline}</p>
+            <p>{gymData.tagline1}</p>
+
             <p>{contactData.address}</p>
-            <p>{contactData.phone}</p>
+            <p>{contactData.phone1}, {contactData.phone2}</p>
             <p>{contactData.email}</p>
 
         </div>

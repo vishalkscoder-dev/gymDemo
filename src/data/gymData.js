@@ -1,6 +1,7 @@
 const gymData = {
-  name: "VR Gym",
-  tagline: "Build Strength. Build Confidence.",
+  name: "V.R.GYM",
+  tagline1: "INSTALL YOUR MUSCLES",
+  tagline2: "UNISEX GYM",
   description:
     "VR Gym is a modern fitness gym focused on strength, fitness, and healthy lifestyle training.",
   experience:

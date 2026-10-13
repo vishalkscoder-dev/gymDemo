@@ -3,6 +3,7 @@ import React from 'react'
 import ContactForm from "../components/ContactForm"
 import Hero from "../components/Hero"
 import contactData from "../data/contactData"
+import GymMaps from '../components/GymMaps'
 
 export default function Contact() {
   return (
@@ -22,7 +23,7 @@ export default function Contact() {
 
         <p>{contactData.address}</p>
         
-        <p>{contactData.phone}</p>
+        <p>{contactData.phone1},  {contactData.phone2}</p>
 
         <p>{contactData.email}</p>
 
@@ -33,8 +34,9 @@ export default function Contact() {
         <h2>Membership Enquiry</h2>
 
         <ContactForm/>
+        <GymMaps/>
       </section>
-      
+
     </main>
   )
 }

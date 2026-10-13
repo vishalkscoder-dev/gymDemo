@@ -3,13 +3,13 @@ import React from 'react'
 import Hero from "../components/Hero"
 import CTASection from "../components/CTASection"
 import FacilityCard from "../components/FacilityCard"
-import TrainerCard from "../components/TrainerCard"
+// import TrainerCard from "../components/TrainerCard"
 import MemberShipCard from "../components/MemberShipCard"
 import Gallery from "../components/Gallery"
 
 import gymData from "../data/gymData"
 import facilities from "../data/facilities"
-import trainers from "../data/trainers"
+// import trainers from "../data/trainers"
 import memberships from "../data/memberships"
 import galleryImages from "../data/gallery"
 
@@ -17,7 +17,7 @@ import galleryImages from "../data/gallery"
 
 export default function Home() {
   const featuredFacilities = facilities.slice(0,3)
-  const featuredTrainers = trainers.slice(0,3)
+  // const featuredTrainers = trainers.slice(0,3)
   const featuredMemberships = memberships.slice(0,3)
   const previewGallery = galleryImages.slice(0,4)
 
@@ -26,9 +26,22 @@ export default function Home() {
 
       {/* Hero */}
 
+      <video 
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload='auto'
+        aria-hidden='true'  
+      >
+        <source src='/videos/gymHero.mp4' type='video/mp4'/>
+
+      </video>
+
       <Hero
         title={gymData.name}
-        description={gymData.tagline}
+        tagline1={gymData.tagline1}
+        tagline2={gymData.tagline2}
         primaryText="Join Now"
         primaryLink="/membership"
         secondaryText="Explore Facilities"
@@ -61,7 +74,7 @@ export default function Home() {
 
       {/* Featured Trainers */}
 
-      <section>
+      {/* <section>
         <h2>Meet our Trainers</h2>
 
         <div>
@@ -72,7 +85,7 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </section> */}
 
 
       {/* Membership Preview */}

@@ -9,7 +9,7 @@ export default function Navbar() {
         {name: "Home", path: "/"},
         {name: "About", path: "/about"},
         {name:"Facilities", path: "/facilities"},
-        {name: "Trainers", path: "/trainers"},
+        // {name: "Trainers", path: "/trainers"},
         {name: "Membership", path: "/membership"},
         {name: "Gallery", path: "/gallery"},
         {name: "Contact", path: "/contact"}
